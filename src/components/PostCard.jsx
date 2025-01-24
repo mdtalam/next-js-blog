@@ -13,7 +13,7 @@ const PostCard = ({post}) => {
       </div>
       {/* Button positioned at the bottom of the card */}
       <div className="card-actions justify-center mt-auto">
-        <Link href={`/details/${id}`} className="btn btn-primary mb-4">Details</Link>
+        <Link href={`/details/${id}`} className="btn text-white bg-gray-800 btn-white hover:text-gray-800 hover:border-b-4 hover:border-gray-800 hover:bg-white mb-4">Details</Link>
       </div>
     </div>
     </>

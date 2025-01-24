@@ -5,7 +5,6 @@ const Home = async () => {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts');
   const data = await res.json()
 
-  console.log(data)
 
   return (
     <div className="container mx-auto my-14 px-4">

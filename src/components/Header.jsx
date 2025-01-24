@@ -7,7 +7,6 @@ import { useState } from "react";
 
 const Header = () => {
   const { user } = useUser();
-  console.log(user);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
