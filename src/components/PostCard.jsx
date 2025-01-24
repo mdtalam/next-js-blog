@@ -4,7 +4,6 @@ import Link from "next/link";
 
 
 const PostCard = ({post}) => {
-    console.log(post)
     const {title,id} = post
   return (
     <>
