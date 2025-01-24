@@ -17,8 +17,8 @@ const Header = () => {
     <header className="bg-gray-800 text-white py-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center px-4">
         {/* Logo */}
-        <div className="text-lg font-bold">
-          <Link href="/" className="hover:text-teal-400">
+        <div className="text-2xl font-bold">
+          <Link href="/" >
             My Blog
           </Link>
         </div>
