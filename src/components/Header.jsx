@@ -1,25 +1,14 @@
-"use client"
+"use client";
+import useUser from "@/hooks/useUser";
 import Link from "next/link";
 // components/Header.js
 
 import { useState } from "react";
 
-
 const Header = () => {
-//   const [isAuthenticated, setIsAuthenticated] = useState(false); // Replace with actual auth logic
+  const { user } = useUser();
+  console.log(user);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-//   const router = useRouter();
-
-//   const handleLogin = () => {
-//     // Implement your login logic
-//     setIsAuthenticated(true);
-//   };
-
-//   const handleLogout = () => {
-//     // Implement your logout logic
-//     setIsAuthenticated(false);
-//     router.push("/");
-//   };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -31,33 +20,48 @@ const Header = () => {
         {/* Logo */}
         <div className="text-lg font-bold">
           <Link href="/" className="hover:text-teal-400">
-          My Blog
+            My Blog
           </Link>
         </div>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center space-x-6">
           <Link href="/" className="text-lg font-semibold hover:text-teal-400">
-          Home
+            Home
           </Link>
-          <Link href="/profile" className="text-lg font-semibold hover:text-teal-400">
-          Profile
+          <Link
+            href="/profile"
+            className="text-lg font-semibold hover:text-teal-400"
+          >
+            Profile
           </Link>
-         
-            <button
-            //   onClick={handleLogout}
-              className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600"
-            >
-              Logout
-            </button>
-      
-            <button
-            //   onClick={handleLogin}
-              className="bg-teal-500 px-4 py-2 rounded text-white hover:bg-teal-600"
-            >
-              Login
-            </button>
-         
+
+          {user ? (
+            <>
+              <Link
+                href="/api/auth/logout"
+                className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600"
+              >
+                Log Out
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/api/auth/login"
+                className="bg-teal-500 px-4 py-2 rounded text-white hover:bg-teal-600"
+              >
+                Login
+              </Link>
+
+              <Link
+                href="/api/auth/register"
+                className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -72,35 +76,33 @@ const Header = () => {
         {isMenuOpen && (
           <div className="absolute top-16 left-0 w-full bg-gray-800 shadow-lg md:hidden">
             <nav className="flex flex-col items-center space-y-4 py-4">
-              <Link href="/" onClick={() => setIsMenuOpen(false)}
-                  className="text-lg font-semibold hover:text-teal-400">
+              <Link
+                href="/"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-lg font-semibold hover:text-teal-400"
+              >
                 Home
               </Link>
-              <Link href="/profile" onClick={() => setIsMenuOpen(false)}
-                  className="text-lg font-semibold hover:text-teal-400">
+              <Link
+                href="/profile"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-lg font-semibold hover:text-teal-400"
+              >
                 Profile
               </Link>
- 
-                <button
-                //   onClick={() => {
-                //     handleLogout();
-                //     setIsMenuOpen(false);
-                //   }}
-                  className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600"
-                >
-                  Logout
-                </button>
 
-                <button
-                //   onClick={() => {
-                //     handleLogin();
-                //     setIsMenuOpen(false);
-                //   }}
-                  className="bg-teal-500 px-4 py-2 rounded text-white hover:bg-teal-600"
-                >
-                  Login
-                </button>
-
+              <Link
+                href="/api/auth/login"
+                className="bg-teal-500 px-4 py-2 rounded text-white hover:bg-teal-600"
+              >
+                Login
+              </Link>
+              <Link
+                href="/api/auth/register"
+                className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600"
+              >
+                Sign Up
+              </Link>
             </nav>
           </div>
         )}
