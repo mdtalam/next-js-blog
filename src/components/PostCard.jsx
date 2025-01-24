@@ -7,9 +7,9 @@ const PostCard = ({post}) => {
     const {title,id} = post
   return (
     <>
-      <div className="card bg-base-100 w-96 shadow-xl flex flex-col">
+      <div className="card bg-base-100 shadow-xl flex flex-col mt-10 border-2 border-gray-400">
       <div className="card-body flex-1">
-        <h2 className="card-title">{title}</h2>
+        <h2 className="card-title text-center">{title}</h2>
       </div>
       {/* Button positioned at the bottom of the card */}
       <div className="card-actions justify-center mt-auto">

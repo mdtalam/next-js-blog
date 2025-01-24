@@ -74,7 +74,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="absolute top-16 left-0 w-full bg-gray-800 shadow-lg md:hidden">
+          <div className="absolute top-16 z-10 left-0 w-full bg-gray-800 shadow-lg md:hidden">
             <nav className="flex flex-col items-center space-y-4 py-4">
               <Link
                 href="/"
@@ -91,18 +91,29 @@ const Header = () => {
                 Profile
               </Link>
 
-              <Link
-                href="/api/auth/login"
-                className="bg-teal-500 px-4 py-2 rounded text-white hover:bg-teal-600"
+              {user ? (
+                <><Link
+                href="/api/auth/logout"
+                className="bg-red-500 px-4 py-2 rounded text-white hover:bg-teal-600"
               >
-                Login
-              </Link>
-              <Link
-                href="/api/auth/register"
-                className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600"
-              >
-                Sign Up
-              </Link>
+                Log Out
+              </Link></>
+              ) : (
+                <>
+                  <Link
+                    href="/api/auth/login"
+                    className="bg-teal-500 px-4 py-2 rounded text-white hover:bg-teal-600"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    href="/api/auth/register"
+                    className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600"
+                  >
+                    Sign Up
+                  </Link>
+                </>
+              )}
             </nav>
           </div>
         )}
